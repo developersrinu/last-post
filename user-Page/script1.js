@@ -2,7 +2,7 @@ let IP = "";
 async function getIp() {
   let response = await fetch("https://api.ipify.org/?format=json");
   let data = await response.json();
-  // console.log(data);
+  console.log(data);
   IP = data.ip;
   const URL = `https://ipinfo.io/${IP}?token=732c33d916ac38`;
   getInfo(URL);
@@ -33,7 +33,7 @@ async function getInfo(URL) {
     document.getElementById("city").innerText = data.city;
     document.getElementById("region").innerText = data.region;
     document.getElementById("org").innerText = data.org;
-    document.getElementById("host-name").innerText = data.hostname;
+    // document.getElementById("host-name").innerText = data.hostname;
 
     // More About You Elements
     document.getElementById("time-zone").innerText = data.timezone;
@@ -113,11 +113,11 @@ function filterPostOffices() {
   } else {
     const filteredPostOffices = postOfficesData.filter((item) => {
       return (
-        item.Name.toLowerCase().includes(searchTerm) ||
-        item.BranchType.toLowerCase().includes(searchTerm) ||
-        item.DeliveryStatus.toLowerCase().includes(searchTerm) ||
-        item.District.toLowerCase().includes(searchTerm) ||
-        item.Division.toLowerCase().includes(searchTerm)
+        item.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.BranchType.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.DeliveryStatus.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.District.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.Division.toLowerCase().includes(searchTerm.toLowerCase())
       );
     });
 
@@ -143,3 +143,12 @@ function renderPostOffices(data) {
     container.append(item);
   });
 }
+
+
+
+///=============
+
+
+
+
+
